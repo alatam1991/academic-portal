@@ -11,7 +11,7 @@ class Router
         $controllerName = ucfirst($url[0]) . 'Controller';
         $method = $url[1] ?? 'index';
 
-        require_once "../app/controllers/$controllerName.php";
+        $controllerPath = __DIR__ . "/../app/controllers/$controllerName.php";
 
         $controller = new $controllerName;
         $controller->$method();

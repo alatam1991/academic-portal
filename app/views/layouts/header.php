@@ -37,9 +37,11 @@
     <h3>Menu</h3>
 
     <?php foreach($menuPermissions as $perm): ?>
-        <a href="#">
-            <?= ucfirst(str_replace('_', ' ', $perm['name'])); ?>
+        <?php if(!empty($perm['route'])): ?>
+            <a href="/academic-portal/public/?url=<?= htmlspecialchars($perm['route']); ?>">
+                <?= ucfirst(str_replace('_', ' ', $perm['name'])); ?>
         </a>
+    <?php endif; ?>
     <?php endforeach; ?>
 
 </div>

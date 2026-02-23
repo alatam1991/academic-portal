@@ -1,2 +1,4 @@
 <h2>Dashboard</h2>
-<p>Welcome <?= $_SESSION['user_name']; ?> 🔥</p>
+<p>Welcome 
+    <?= htmlspecialchars($session['user_name'] ?? ''); ?>
+     🔥</p>

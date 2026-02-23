@@ -19,19 +19,22 @@ class Permission extends Model
     }
 
     public function getPermissionDetailsByNames($permissionNames)
-    {
-        if (empty($permissionNames)) return [];
-
-        $placeholders = implode(',', array_fill(0, count($permissionNames), '?'));
-
-        $stmt = $this->db->prepare("
-            SELECT name, module 
-            FROM permissions
-            WHERE name IN ($placeholders)
-        ");
-
-        $stmt->execute($permissionNames);
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+{
+    if (empty($permissionNames)) {
+        return [];
     }
+
+    $placeholders = implode(',', array_fill(0, count($permissionNames), '?'));
+
+    $stmt = $this->db->prepare("
+        SELECT name, module, route
+        FROM permissions
+        WHERE name IN ($placeholders)
+        ORDER BY module ASC
+    ");
+
+    $stmt->execute($permissionNames);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 }

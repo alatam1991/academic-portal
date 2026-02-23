@@ -1,7 +1,7 @@
 <?php
 
-require_once '../core/Controller.php';
-require_once '../app/middleware/AuthMiddleware.php';
+require_once __DIR__ . '/../../core/Controller.php';
+require_once __DIR__ . '/../middleware/AuthMiddleware.php';
 
 class HomeController extends Controller
 {
